@@ -1,0 +1,83 @@
+class Class1
+    {
+
+
+        public void NumeralsToCardinals(int number)
+        {
+            int n = number;
+            string convert = "";
+            string[] units = { "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine" };
+            string[] teens = { "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
+            string[] tens = { "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+
+
+            if (n == 0)
+                convert += "Zero";
+            else if (n > 0 && n <= 9)
+            {
+                convert += units[n - 1];
+            }
+            else if (n >= 10 && n <= 19)
+            {
+                convert += teens[n - 10];
+            }
+            else if (n >= 20 && n <= 99)
+            {
+                int firstnumber, secondnumber;
+                firstnumber = n / 10;
+                secondnumber = n % 10;
+                if (secondnumber == 0)
+                {
+                    convert += tens[firstnumber - 1];
+                }
+                else
+                {
+                    convert += tens[firstnumber - 1];
+                    convert += " " + units[secondnumber - 1];
+                }
+            }
+            else if (n >= 100 && n <= 999)
+            {
+                int firstnumber, secondnumber, thirdnumber;
+                firstnumber = n / 100;
+                secondnumber = (n / 10) % 10;
+                thirdnumber = n % 10;
+                if (secondnumber == 0 && thirdnumber == 0)
+                {
+                    convert += units[firstnumber - 1] + " Hundred ";
+                }
+                else if (thirdnumber == 0)
+                {
+                    convert += units[firstnumber - 1] + " Hundred ";
+                    convert += tens[secondnumber - 1];
+                }
+                else if (secondnumber == 0)
+                {
+                    convert += units[firstnumber - 1] + " Hundred ";
+                    convert += units[thirdnumber - 1];
+                }
+                else if (secondnumber == 1)
+                {
+                    convert += units[firstnumber - 1] + " Hundred ";
+                    convert += teens[thirdnumber];
+                }
+                else
+                {
+                    convert += units[firstnumber - 1] + " Hundred ";
+                    convert += tens[secondnumber - 1] + " ";
+                    convert += units[thirdnumber - 1];
+                }
+
+
+            }
+            Console.WriteLine(convert);
+
+        }
+    }
+}
+
+
+
+
+
+
